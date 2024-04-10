@@ -25,13 +25,13 @@ SECRET_KEY = 'django-insecure-37&=ovgv219+w9u-$e5hxirpip!$7@%=^#*@#u(2i5%!=l!63o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://pnchatapp.azurewebsites.net/']
+ALLOWED_HOSTS = ['https://pnchatapp.azurewebsites.net/', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    "daphne",
+    # "daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,4 +125,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-ASGI_APPLICATION = "chat_app.asgi.application"
+# ASGI_APPLICATION = "chat_app.asgi.application"
