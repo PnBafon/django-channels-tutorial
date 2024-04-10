@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-37&=ovgv219+w9u-$e5hxirpip!$7@%=^#*@#u(2i5%!=l!63o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://pnchatapp.azurewebsites.net/', '127.0.0.1']
+ALLOWED_HOSTS = ['pnchatapp.azurewebsites.net', '127.0.0.1']
 
 
 # Application definition
