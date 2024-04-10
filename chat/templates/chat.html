@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+
+{% for message in messages%}
+    {% if message.sender.username == request.user.username %}
+
+    <div class="message_you">
+        <div>{{request.user.username}}</div>
+        <p>
+            {{message.message}}
+        </p>
+
+    </div>
+
+    {% else %}
+
+    <div class="message_reply">
+        <div>{{message.sender.username}}</div>
+        <p>
+            {{message.message}}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+{% endfor %}
+<form action="" method="POST" id="message-form">
+    {%csrf_token%}
+    <input type="text" placeholder="Enter a message" id="message">
+    <button type="submit">Send Message</button>
+</form>
+
+
+
+
+{{ room_name|json_script:"room-name" }}
+
+
+<script>
+    // getting the form data
+    
+
+    let roomName = document.querySelector('#room-name').textContent
+    
+    const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/chat/'
+            + roomName
+            + '/'
+        );
+
+    
+    // getting the data sent by the server
+    chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            console.log(data)
+        };
+
+    
+    // closing the connection 
+    chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+    
+    // sending data to the server
+    
+    let message_sent = ''
+    form = document.querySelector('#message-form')
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        message_sent = document.querySelector('#message').value;
+        
+        
+        chatSocket.send(
+            JSON.stringify({
+                'message': message_sent
+            
+            }))
+    })
+    
+</script>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
