@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['pnchatapp.azurewebsites.net', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    # "daphne",
+    "daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,4 +125,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# ASGI_APPLICATION = "chat_app.asgi.application"
+ASGI_APPLICATION = "chat_app.asgi.application"
