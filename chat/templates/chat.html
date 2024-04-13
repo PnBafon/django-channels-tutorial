@@ -7,7 +7,7 @@
 {% for message in messages%}
     {% if message.sender.username == request.user.username %}
 
-    <div class="message_you">
+    <div class="message_you" style="background-color: red;">
         <div>{{request.user.username}}</div>
         <p>
             {{message.message}}
